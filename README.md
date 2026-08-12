@@ -70,3 +70,12 @@ Para asegurar el correcto funcionamiento del backend del Sistema de Asistencias,
     }
     ```
   * **Validación de Postman (Test Script):** Se comprueba mediante scripts de JavaScript integrados que el código de respuesta sea `201` y que el tiempo de respuesta de la base de datos sea menor a `500ms`.
+
+  ---
+
+## 🔄 Estrategia de Pruebas de Regresión
+
+Para garantizar que las futuras actualizaciones o correcciones de código no afecten las funcionalidades principales del Sistema de Asistencias, se implementa una estrategia de regresión basada en los flujos críticos:
+
+* **Smoke Testing (Pruebas de Humo):** Cada vez que se despliega una nueva versión, se ejecutan de forma prioritaria los casos **TC-01 (Login)** y **TC-03 (Registro)**. Si estos fallan, la versión se rechaza inmediatamente.
+* **Regresión Automatizada (Postman / Newman):** La colección de APIs creada en Postman se ejecuta mediante scripts automatizados para validar que los endpoints de alumnos y asistencias respondan correctamente ante cada cambio en la base de datos SQLite.
