@@ -40,3 +40,33 @@ Asegurar la integridad, funcionalidad y seguridad de los módulos de autenticaci
 * **Metodología:** Testing Manual, Pruebas de Caja Negra.
 * **Documentación:** Markdown, GitHub.
 * **Base de datos:** SQLite.
+---
+
+## 🔌 Testing de APIs (Postman)
+
+Para asegurar el correcto funcionamiento del backend del Sistema de Asistencias, se diseñó una colección de pruebas en **Postman** enfocada en validar los endpoints principales de la aplicación.
+
+### 📌 Endpoints Principales Evaluados
+
+| Método | Endpoint | Descripción | Estado Esperado (Código HTTP) |
+| :--- | :--- | :--- | :--- |
+| **POST** | `/api/alumnos` | Registrar un nuevo alumno en la base de datos | `201 Created` |
+| **GET**  | `/api/alumnos` | Obtener el listado completo de alumnos | `200 OK` |
+| **POST** | `/api/asistencia` | Registrar la asistencia diaria de un alumno | `201 Created` |
+| **GET**  | `/api/asistencia/{id}` | Consultar el historial de asistencias por alumno | `200 OK` |
+
+---
+
+### 🧪 Ejemplo de Validación (Prueba en Postman)
+
+* **Prueba de Registro Exitoso (`POST /api/alumnos`):**
+  * **Body enviado (JSON):**
+    ```json
+    {
+      "nombre": "Carlos",
+      "apellido": "Gómez",
+      "dni": "35444888",
+      "email": "carlos.gomez@email.com"
+    }
+    ```
+  * **Validación de Postman (Test Script):** Se comprueba mediante scripts de JavaScript integrados que el código de respuesta sea `201` y que el tiempo de respuesta de la base de datos sea menor a `500ms`.
